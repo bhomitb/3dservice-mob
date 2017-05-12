@@ -8,14 +8,18 @@
 
 
 .camera-button{
-    background-image: url('../img/camera.jpg');
-    background-position: center;
-    padding: 112px;
+    background-image: url(../img/camera.jpeg);
+    background-position: 2px -176px;
+    padding: 108px;
+    border-radius: 50%;
+    border: 1px;
+    background-size: 600px;
 }
 
 
 .convert{
-    border: 2px solid #0760ef;
+    border: 2px solid grey
+    ;
     background-color: #1168f4;
     font-size: 1.6em;
     border-radius: 10px;
