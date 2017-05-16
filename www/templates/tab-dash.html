@@ -1,13 +1,13 @@
 <ion-view view-title="Dashboard">
-  <ion-content scroll="false">
+  <ion-content class='padding' scroll=false>
     <div class='wrapper-dash'>
     <div class="camera">
-        <button class='camera-button'></button>
+        <button class='camera-button' ng-click="takePic()"></button>
         <p class="no-of-images"> </p> <!-- insert the no. of images added here-->
     </div>
     <div class="convert-wrap">
-        <button class="convert" value="CONVERT">CONVERT</button>
+        <button class="convert" value="CONVERT" ng-click="convert()">CONVERT</button>
       </div>
     </div>
   </ion-content>
-</ion-view>
+</ion-view>>
