@@ -6,7 +6,9 @@
     margin-top: 15%;
 }
 
-
+.image{
+ height: 50px;
+}
 .camera-button{
     background-image: url(../img/camera.jpeg);
     background-position: 2px -176px;

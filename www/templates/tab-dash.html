@@ -4,6 +4,11 @@
     <div class="camera">
         <button class='camera-button' ng-click="takePic()"></button>
         <p class="no-of-images"> </p> <!-- insert the no. of images added here-->
+        <div class="card">
+          <div class="item item-image">
+            <img class="image" ng-src="{{imgSrc}}">
+          </div>
+        </div>
     </div>
     <div class="convert-wrap">
         <button class="convert" value="CONVERT" ng-click="convert()">CONVERT</button>
