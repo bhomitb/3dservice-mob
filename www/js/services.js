@@ -4,12 +4,17 @@ angular.module('starter.services', [])
     function dataService(callback){
     var deferred = $q.defer();
     $ionicLoading.show({template : 'Loading..'})
-    $http.get("10.212.8.1:3000/data") //The server request goes here
+    $http.get("https://demo4227557.mockable.io/data") //The server request goes here
         .success(function(data){
-            $ionicLoading.hide();
+           $ionicLoading.hide();
            deferred.resolve(data)
+          
         })
-        return deferred.promise;
+        .error(function(){alert('Error')
+        $ionicLoading.hide();
+        deferred.reject();
+    })
+    return deferred.promise;
     }
     return{
       dataService : dataService

@@ -5,8 +5,9 @@
         <button class='camera-button' ng-click="takePic()"></button>
         <p class="no-of-images"> </p> <!-- insert the no. of images added here-->
         <div class="card">
-          <div class="item item-image">
-            <img class="image" ng-src="{{imgSrc}}">
+          <div class="item item-image padding" ng-repeat="x in imgSrc">
+            {{x}}
+            <!--<img class="image" ng-src="{{imgSrc}}">-->
           </div>
         </div>
     </div>
