@@ -1,15 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
-
-.controller('AboutCtrl', function($scope, Chats){
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('cameraCtrl', function($scope, $cordovaCamera, $cordovaDialogs){
+.controller('cameraCtrl', function($scope, $cordovaCamera, $cordovaDialogs, $cordovaAppAvailability){
+    document.addEventListener("deviceready", function () {
+    $cordovaAppAvailability.check('twitter://')
+      .then(function() {
+        alert("is available");
+      }, function () {
+        alert("not available");
+      });
+  }, false);
+  $scope.imgSrc = [];
   $scope.takePic = function () {
             // var options = {
             //     quality: 75,
@@ -26,9 +26,9 @@ angular.module('starter.controllers', [])
     // //alert(uri);
     // takePicture();    
 
-    $cordovaCamera.getPicture().then(function (imageData) {
+    $cordovaCamera.getPicture().then(function (imageData)
+    {
                 // Success! Image data is here
-                $scope.imgSrc = [];
                 $scope.imgSrc.push(imageData);
                 $scope.takePic()
             },function (err) {
@@ -38,9 +38,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ArchiveCtrl', function($scope, dataApi){
-  dataApi.dataService().then(function(data){
-    $scope.data = data;
-  })
-  console.log($scope.data)
+  var call = dataApi.download()
+  $scope.imgSrc = call;
+  alert($scope.imgSrc);
   });
 
