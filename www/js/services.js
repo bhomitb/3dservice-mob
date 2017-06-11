@@ -8,14 +8,14 @@ angular.module('starter.services', [])
     //     .success(function(data){
     //        $ionicLoading.hide();
     //        deferred.resolve(data)
-          
+
     //     })
     //     .error(function(){alert('Error')
     //     $ionicLoading.hide();
     //     deferred.reject();
     // })
     // return deferred.promise;
-    function download(){
+    function download(cb){
         $ionicLoading.show({
        template: 'Loading...'
      });
@@ -26,13 +26,13 @@ angular.module('starter.services', [])
                 create: true
             },
             function(dirEntry) {
-                alert('created dir');// 
+                alert('created dir');//
                 dirEntry.getFile(
-                    "test.png", 
+                    "test.png",
                     {
-                        create: true, 
+                        create: true,
                         exclusive: false
-                    }, 
+                    },
                     function gotFileEntry(fe) {
                         alert('file entry');
                         var p = fe.toURL();
@@ -46,7 +46,7 @@ angular.module('starter.services', [])
                                  $ionicLoading.hide();
                                  var imgFile = entry.toURL();
                                 alert(imgFile);
-                                return imgFile; // Ye obect ab pass ni ho rha       
+                                cb(imgFile); // Ye obect ab pass ni ho rha
                             },
                             function(error) {
                                 $ionicLoading.hide();
@@ -55,7 +55,7 @@ angular.module('starter.services', [])
                             false,
                             null
                         );
-                    }, 
+                    },
                     function() {
                         $ionicLoading.hide();
                         console.log("Get file failed");
@@ -72,9 +72,9 @@ angular.module('starter.services', [])
 
     function upload(){
     }
-     
+
     return{
       download : download,
       upload : upload
       }
-    });   
+    });
