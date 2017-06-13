@@ -28,7 +28,7 @@ angular.module('starter.services', [])
             function(dirEntry) {
                 alert('created dir');//
                 dirEntry.getFile(
-                    "test.png",
+                    "test.ply",
                     {
                         create: true,
                         exclusive: false
@@ -39,14 +39,14 @@ angular.module('starter.services', [])
                         //fe.remove();
                         ft = new FileTransfer();
                         ft.download(
-                            encodeURI("http://ionicframework.com/img/ionic-logo-blog.png"),
+                            encodeURI("http://29d86399.ngrok.io/data"),
                             p,
                             function(entry) {
                                 alert('downloaded');
                                  $ionicLoading.hide();
                                  var imgFile = entry.toURL();
                                 alert(imgFile);
-                                cb(imgFile); // Ye obect ab pass ni ho rha
+                                cb(imgFile); 
                             },
                             function(error) {
                                 $ionicLoading.hide();

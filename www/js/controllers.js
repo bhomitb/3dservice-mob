@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
   .controller('cameraCtrl', function ($scope, $cordovaCamera, $cordovaDialogs, $cordovaAppAvailability) {
     document.addEventListener('deviceready', function () {
-      $cordovaAppAvailability.check('twitter://')
+      $cordovaAppAvailability.check('com.google.android.apps.photos')
         .then(function () {
           alert('is available')
         }, function () {
@@ -36,9 +36,16 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('ArchiveCtrl', function ($scope, dataApi) {
+  .controller('ArchiveCtrl', function ($scope, dataApi, $cordovaFileOpener2) {
     dataApi.download(function (imageSrc) {
       $scope.imgSrc = imageSrc
+        $cordovaFileOpener2.open(imageSrc,'application/octet-stream')
+          .then(function() {
+          alert('file opened successfully')
+      }, 
+        function(err) {
+      alert('An error occurred');
+  });
       alert($scope.imgSrc)
     })
   })
