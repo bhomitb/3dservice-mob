@@ -43,7 +43,8 @@ angular.module('starter.controllers', [])
   }
 /*Convert Function*/
   $scope.convert = function(){
-
+    $scope.imgSrc = [];
+    dataApi.convert();
   }
   })
 

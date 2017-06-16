@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('dataApi', function($ionicLoading, $q, $cordovaFileTransfer){
+.factory('dataApi', function($ionicLoading, $q, $cordovaFileTransfer, $http){
     // function dataService(callback){
     var deferred = $q.defer();
     // $ionicLoading.show({template : 'Loading..'})
@@ -81,7 +81,7 @@ angular.module('starter.services', [])
         $ionicLoading.show({
        template: 'Uploading...'
      });
-        $cordovaFileTransfer.upload("http://ef9f34c3.ngrok.io/converting", source, options).then(function(result) {
+        $cordovaFileTransfer.upload("http://ef9f34c3.ngrok.io/uploading", source, options).then(function(result) {
             $ionicLoading.hide()
             console.log("SUCCESS: " + JSON.stringify(result.response));
             console.log('upload finished');
@@ -97,9 +97,24 @@ angular.module('starter.services', [])
 
 
 /*Convert Service*/
+ function convert(){
+        $ionicLoading.show({
+       template: 'Converting...'
+     });
+     $http.get("http://ef9f34c3.ngrok.io/converting")
+            .success(function() {
+                $ionicLoading.hide();
+                alert("You will be notified when your file is converted")
+            })
+            .error(function(err) {
+                $ionicLoading.hide();
+                alert("ERROR");
+            });
+ }
 
     return{
       download : download,
-      upload : upload
+      upload : upload,
+      convert : convert
       }
     });
