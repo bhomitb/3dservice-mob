@@ -3,7 +3,7 @@
 /* Dashboard CSS */
 .wrapper-dash{
     margin-left: 20%;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .image{
@@ -11,27 +11,37 @@
 }
 .camera-button{
     background-image: url(../img/camera.jpeg);
-    background-position: 2px -176px;
-    padding: 108px;
+    background-position: -1px -132px;
+    padding: 75px;
     border-radius: 50%;
     border: 1px;
-    background-size: 600px;
+    background-size: 431px;
+    margin-left: 22px;
 }
 
+.no-of-images{
+    margin-top: 11%;
+    margin-left: 29%;
+    font-size: 1.5em;
+    
 
+}
 .convert{
-    border: 2px solid grey
-    ;
+    border: 2px solid grey;
     background-color: #1168f4;
     font-size: 1.6em;
     border-radius: 10px;
 
 }
-.convert-wrap{
-    padding: 60px;
-    margin-top: 25%;
+.upload-wrap{
+    margin-top: 15%;
+    margin-left: 15%;
 }
+.convert-wrap{
+    margin-top: 15%;
+    margin-left: 15%;
 
+}
 
 /* About */
 .about-wrap{

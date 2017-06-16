@@ -3,15 +3,12 @@
     <div class='wrapper-dash'>
     <div class="camera">
         <button class='camera-button' ng-click="takePic()"></button>
-        <p class="no-of-images"> </p> <!-- insert the no. of images added here-->
-        <div class="card">
-          <div>
-            {{imgSrc}}
-            <!--<img class="image" ng-src="{{imgSrc}}">-->
-          </div>
-        </div>
+        <p class="no-of-images"> {{imgSrc.length}} </p> <!-- insert the no. of images added here-->
     </div>
-    <div class="convert-wrap">
+    <div class="upload-wrap">
+        <button class="convert" value="UPLOAD" ng-click="upload()">UPLOAD</button>
+      </div>
+      <div class="convert-wrap">
         <button class="convert" value="CONVERT" ng-click="convert()">CONVERT</button>
       </div>
     </div>

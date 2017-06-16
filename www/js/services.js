@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('dataApi', function($ionicLoading, $q){
+.factory('dataApi', function($ionicLoading, $q, $cordovaFileTransfer){
     // function dataService(callback){
     var deferred = $q.defer();
     // $ionicLoading.show({template : 'Loading..'})
@@ -15,6 +15,7 @@ angular.module('starter.services', [])
     //     deferred.reject();
     // })
     // return deferred.promise;
+/*Download Service*/
     function download(cb){
         $ionicLoading.show({
        template: 'Loading...'
@@ -39,7 +40,7 @@ angular.module('starter.services', [])
                         //fe.remove();
                         ft = new FileTransfer();
                         ft.download(
-                            encodeURI("http://29d86399.ngrok.io/data"),
+                           encodeURI("http://ef9f34c3.ngrok.io/data"),
                             p,
                             function(entry) {
                                 alert('downloaded');
@@ -69,9 +70,33 @@ angular.module('starter.services', [])
         console.log("Request for filesystem failed");
     });
  }
-
-    function upload(){
+/*Upload Service*/
+   function upload(source,callback){
+       var options = {
+    fileKey: "avatar",
+    fileName: source,
+    chunkedMode: false,
+    mimeType: "image/jpeg"
     }
+        $ionicLoading.show({
+       template: 'Uploading...'
+     });
+        $cordovaFileTransfer.upload("http://ef9f34c3.ngrok.io/converting", source, options).then(function(result) {
+            $ionicLoading.hide()
+            console.log("SUCCESS: " + JSON.stringify(result.response));
+            console.log('upload finished');
+            callback('uploaded');
+        }, function(err) {
+            $ionicLoading.hide()
+            console.log("ERROR: " + JSON.stringify(err));
+            callback('not uploaded')
+        }, function (progress) {
+            // constant progress updates
+        })
+   } 
+
+
+/*Convert Service*/
 
     return{
       download : download,
